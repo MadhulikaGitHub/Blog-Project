@@ -1,0 +1,223 @@
+<%- include('../../header.ejs') %>
+
+<section class="dashboard-wrap mtb-40">
+  <div class="container">
+    <div class="body-content">
+      <div class="row">
+        <!-- sidebar -->
+        <div class="col-md-3">
+          <div class="dash-left">
+            <ul>
+              <li class="active"><a href="/admin/dashboard">Dashboard</a></li>
+              <li><a href="/admin/blog/display" class="active">Blogs</a></li>
+              <li><a href="/admin/category/display">Categories</a></li>
+              <li><a href="#">Pages</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- table -->
+        <div class="col-md-9">
+          <div class="dash-right">
+            <div class="dash-header">
+              <div class="dash-title">
+                <h1>Blogs</h1>
+              </div>
+              <div class="dash-nav">
+                <!-- <a href="/admin/blog/add-blog" class="btn btn-success">Add Post</a> -->
+                <a href="/admin/blog/add-blog" class="btn btn-success"
+                  >Add Blog</a
+                >
+                <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Add Blog
+                </button> -->
+              </div>
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered table-striped">
+              <tr>
+                <!-- <th>#ID</th> -->
+                <th>Image</th>
+                <th>Title</th>
+                <!-- <th>Category</th> -->
+                <th>Description</th>
+                <!-- <th>Posted On</th> -->
+                <th>Action</th>
+              </tr>
+              <% d.forEach((item) => { %>
+              <tr>
+                <!-- <td><%= item._id %></td> -->
+                <td><img src="<%= item.image.url %>" width="50rem" height="60rem"></td>
+                <td><%= item.title %></td>
+                <!-- <td>Technology</td> -->
+                <td><%= item.description %></td>
+                <!-- <td>October 22, 2018</td> -->
+                <td>
+                  <a
+                    href="/blogView/<%= item._id %>"
+                    class="btn btn-warning btn-sm"
+                    >View</a
+                  >
+                  <a
+                    href="/blogEdit/<%= item._id %>"
+                    class="btn btn-info btn-sm"
+                    >Edit</a
+                  >
+                  <a
+                    href="/blogDelete/<%= item._id %>"
+                    class="btn btn-danger btn-sm"
+                    >Delete</a
+                  >
+                </td>
+              </tr>
+              <% }) %>
+
+              <!-- <tr>
+                <td>2</td>
+                <td><img src="/images/img2.jpg" /></td>
+                <td>Sample blog post 2</td>
+                <td>Business</td>
+                <td>October 22, 2018</td>
+                <td>
+                  <a href="#" class="btn btn-info btn-sm">Edit</a>
+                  <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><img src="/images/img3.jpg" /></td>
+                <td>Sample blog post 3</td>
+                <td>Science</td>
+                <td>October 22, 2018</td>
+                <td>
+                  <a href="#" class="btn btn-info btn-sm">Edit</a>
+                  <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><img src="/images/img4.jpg" /></td>
+                <td>Sample blog post 4</td>
+                <td>Technology</td>
+                <td>October 22, 2018</td>
+                <td>
+                  <a href="#" class="btn btn-info btn-sm">Edit</a>
+                  <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><img src="/images/img5.jpg" /></td>
+                <td>Sample blog post 5</td>
+                <td>Business</td>
+                <td>October 22, 2018</td>
+                <td>
+                  <a href="#" class="btn btn-info btn-sm">Edit</a>
+                  <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+              </tr> -->
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Blog</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          ❌
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Form start -->
+        <div>
+          <div class="dash-right">
+            <div class="blog-form">
+              <form action="">
+                <div class="form-group form-row">
+                  <label class="col-md-3"
+                    >Title <span class="required">*</span></label
+                  >
+                  <div class="col-md-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Title"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group form-row">
+                  <label class="col-md-3">Is Featured</label>
+                  <div class="col-md-9">
+                    <input type="radio" name="is_featured" value="1" /> Yes
+                    <input type="radio" name="is_featured" value="0" checked />
+                    No
+                  </div>
+                </div>
+                <div class="form-group form-row">
+                  <label class="col-md-3">Is Active</label>
+                  <div class="col-md-9">
+                    <input type="radio" name="is_active" value="1" checked />
+                    Yes <input type="radio" name="is_active" value="0" /> No
+                  </div>
+                </div>
+                <div class="form-group form-row">
+                  <label class="col-md-3">Upload Image</label>
+                  <div class="col-md-9">
+                    <input type="file" id="image" />
+                  </div>
+                </div>
+                <div class="form-group form-row">
+                  <label class="col-md-3"
+                    >Description <span class="required">*</span></label
+                  >
+                  <div class="col-md-9">
+                    <textarea
+                      name="description"
+                      rows="5"
+                      class="form-control"
+                      placeholder="Description"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="form-group form-row">
+                  <label class="col-md-3"></label>
+                  <div class="col-md-9">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Form End -->
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<%- include('../../footer.ejs') %>

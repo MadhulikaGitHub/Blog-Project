@@ -1,0 +1,76 @@
+<%- include('../../header.ejs') %>
+
+    <section class="dashboard-wrap mtb-40">
+    	<div class="container">
+            <div class="body-content">
+        		<div class="row">
+        			<div class="col-md-3">
+                        <div class="dash-left">
+                            <ul>
+                                <li class="active"><a href="/admin/dashboard">Dashboard</a></li>
+                                <li><a href="/admin/blog/display">Blogs</a></li>
+                                <li><a href="/admin/category/display">Categories</a></li>
+                                <li><a href="#">Pages</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>   
+                    </div>
+                    <div class="col-md-9">
+                        <div class="dash-right">
+                            <div class="dash-header">
+                              <div class="dash-title">
+                                  <h1>Edit Blog</h1>
+                              </div>
+                            </div>
+                            <!-- form -->
+                            <div class="blog-form">
+                              <form action="/blogUpdate/<%= edit._id %>" method="post" enctype="multipart/form-data">
+                                <div class="form-group form-row">
+                                    <label class="col-md-3">Title</label>
+                                    <div class="col-md-9">
+                                      <input name="title" type="text" class="form-control" placeholder="Title" value="<%= edit.title %>">
+                                    </div>
+                                </div>
+                                <!-- <div class="form-group form-row">
+                                  <label class="col-md-3">Is Featured</label>
+                                  <div class="col-md-9">
+                                    <input type="radio" name="is_featured" value="1" /> Yes
+                                    <input type="radio" name="is_featured" value="0" checked /> No
+                                  </div>
+                                </div>
+                                <div class="form-group form-row">
+                                  <label class="col-md-3">Is Active</label>
+                                  <div class="col-md-9">
+                                    <input type="radio" name="is_active" value="1" checked /> Yes
+                                    <input type="radio" name="is_active" value="0" /> No
+                                  </div>
+                                </div> -->
+                                <div class="form-group form-row">
+                                  <label class="col-md-3">Upload Image</label>
+                                  <div class="col-md-9">
+                                    <img src="<%= edit.image.url %>" width="50rem" height="60rem">
+                                    <input name="image" type="file" id="image" />
+                                  </div>
+                                </div>
+                                <div class="form-group form-row">
+                                    <label class="col-md-3">Description</label>
+                                    <div class="col-md-9">
+                                      <textarea name="description" rows="5" class="form-control" placeholder="Description"><%= edit.description %></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group form-row">
+                                    <label class="col-md-3"></label>
+                                    <div class="col-md-9">
+                                      <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                              </form>
+                            </div>
+                        </div>   
+                    </div>
+        		</div>
+            </div>
+    	</div>
+    </section>
+
+<%- include('../../footer.ejs') %>

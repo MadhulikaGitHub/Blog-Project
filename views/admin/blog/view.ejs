@@ -1,0 +1,54 @@
+<%- include('../../header.ejs') %>
+
+<section class="dashboard-wrap mtb-40">
+  <div class="container">
+    <div class="body-content">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="dash-left">
+            <ul>
+              <li class="active"><a href="/admin/dashboard">Dashboard</a></li>
+              <li><a href="/admin/blog/display">Blogs</a></li>
+              <li><a href="/admin/category/display">Categories</a></li>
+              <li><a href="#">Pages</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-9">
+          <div class="dash-right">
+            <div class="dash-header">
+              <div class="dash-title">
+                <h1>View</h1>
+              </div>
+            </div>
+
+            <!-- Table -->
+            <table class="table table-bordered table-striped">
+              <tr>
+                <th>#ID</th>
+                <th>Image</th>
+                <th>Title</th>
+                <!-- <th>Category</th> -->
+                <th>Description</th>
+                <th>Posted On</th>
+              </tr>
+              
+                <tr>
+                  <td><%= view._id %></td>
+                  <td><img src="<%= view.image.url %>" width="50rem" height="60rem"></td>
+                  <td><%= view.title %></td>
+                  <!-- <td>Technology</td> -->
+                  <td><%= view.description %></td>
+                  <td><%= view.createdAt.toLocaleDateString() %></td>
+                </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('../../footer.ejs') %>

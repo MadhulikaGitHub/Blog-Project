@@ -1,0 +1,49 @@
+<%- include('../../header.ejs') %>
+
+    <section class="dashboard-wrap mtb-40">
+    	<div class="container">
+            <div class="body-content">
+        		<div class="row">
+        			<div class="col-md-3">
+                        <div class="dash-left">
+                            <ul>
+                                <li class="active"><a href="/admin/dashboard">Dashboard</a></li>
+                                <li><a href="/admin/blog/display">Blogs</a></li>
+                                <li><a href="/admin/category/display">Categories</a></li>
+                                <li><a href="#">Pages</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>   
+                    </div>
+                    <div class="col-md-9">
+                        <div class="dash-right">
+                            <div class="dash-header">
+                              <div class="dash-title">
+                                  <h1>Add Category</h1>
+                              </div>
+                            </div>
+                            <!-- form -->
+                            <div class="blog-form">
+                              <form action="/insertCategory" method="post" enctype="multipart/form-data">
+                                <div class="form-group form-row">
+                                    <label class="col-md-3">Category Name <span class="required">*</span></label>
+                                    <div class="col-md-9">
+                                      <input name="cat_name" type="text" class="form-control" placeholder="Add Category" required>
+                                    </div>
+                                </div>
+                                <div class="form-group form-row">
+                                    <label class="col-md-3"></label>
+                                    <div class="col-md-9">
+                                      <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </div>
+                              </form>
+                            </div>
+                        </div>   
+                    </div>
+        		</div>
+            </div>
+    	</div>
+    </section>
+
+<%- include('../../footer.ejs') %>
