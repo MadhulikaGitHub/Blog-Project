@@ -6,7 +6,6 @@ const BlogController = require('../controllers/admin/BlogController')
 const CategoryController = require('../controllers/admin/CategoryController')
 const ContactController = require('../controllers/ContactController')
 const checkAdminAuth = require('../middleware/auth')
-const CategoryModel = require('../models/Category')
 
 // route
 
