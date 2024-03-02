@@ -4,7 +4,7 @@
   <div class="container">
     <div class="body-content">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 mb-3">
           <div class="dash-left">
             <ul>
               <li class="active">
@@ -21,38 +21,30 @@
           <div class="dash-right">
             <h1>Dashboard</h1>
             <h3>Welcome <%= n %> (<%= e %>)</h3>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
-            </p>
-            <!-- table -->
-            <div class="col-md-9">
-              <div class="dash-right">
-                <!-- Table -->
-                <table class="table table-bordered table-striped">
-                  <tr>
-                    <th>id</th>
-                    <th>Name</th>
-                    <th>Email ID</th>
-                    <th>Phone</th>
-                    <th>Message</th>
-                    <th>Posted On</th>
-                  </tr>
-                  <% cd.forEach((contactItem) => { %>
-                    <tr>
-                      <td><%= contactItem._id %></td>
-                      <td><%= contactItem.name %></td>
-                      <td><%= contactItem.email %></td>
-                      <td><%= contactItem.phone %></td>
-                      <td><%= contactItem.message %></td>
-                      <td><%= contactItem.createdAt.toLocaleDateString() %></td>
-                    </tr>
-                    <% }) %>
-                  
-                </table>
-              </div>
-            </div>
+            <p>Here is the details of people who contacted to you.</p>
+          </div>
+          <div>
+            <!-- Table -->
+            <table class="table table-bordered table-striped">
+              <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Email ID</th>
+                <th>Phone</th>
+                <th>Message</th>
+                <th>Posted On</th>
+              </tr>
+              <% cd.forEach((contactItem) => { %>
+              <tr>
+                <td><%= contactItem._id %></td>
+                <td><%= contactItem.name %></td>
+                <td><%= contactItem.email %></td>
+                <td><%= contactItem.phone %></td>
+                <td><%= contactItem.message %></td>
+                <td><%= contactItem.createdAt.toLocaleDateString() %></td>
+              </tr>
+              <% }) %>
+            </table>
           </div>
         </div>
       </div>
